@@ -1,0 +1,24 @@
+Striide\TinyurlBundle\Entity\Url:
+  type: entity
+  table: striide_tinyurl
+  indexes:
+    short_idx:
+      columns: [ short ]
+    uri_idx:
+      columns: [ uri ]
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    short:
+      type: string
+      length: 255
+    uri:
+      type: string
+    clicks:
+      type: bigint
+    created_at:
+      type: datetime
+  lifecycleCallbacks: {  }

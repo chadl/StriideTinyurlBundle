@@ -1,0 +1,3 @@
+StriideTinyurlBundle_url:
+    pattern:  /tu/{short}
+    defaults: { _controller: StriideTinyurlBundle:Url:short }

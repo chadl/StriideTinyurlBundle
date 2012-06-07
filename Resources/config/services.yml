@@ -1,0 +1,16 @@
+parameters:
+#    striide_tinyurl.example.class: Striide\TinyurlBundle\Example
+
+services:
+  striide_tinyurl.service:
+    class: Striide\TinyurlBundle\Service\TinyUrlService
+    arguments: [@doctrine, @logger, @router]
+    calls:
+      - [ setMinLength, [6]]
+  
+  striide_tinyurl.twig.extension:
+    class: Striide\TinyurlBundle\Extension\TinyUrlExtension
+    calls:
+      - [setTinyUrlService, [@striide_tinyurl.service]]
+    tags:
+      -  { name: twig.extension }
