@@ -45,7 +45,7 @@ class TinyurlService
 
     if(!empty($url))
     {
-      return "/".$this->router->generate('StriideTinyurlBundle_url', array('short' => $url->getShort()));
+      return $this->router->generate('StriideTinyurlBundle_url', array('short' => $url->getShort()));
     }
 
     while(true)
@@ -63,7 +63,7 @@ class TinyurlService
     $this->save($short,$uri);
     $new_url = $this->router->generate('StriideTinyurlBundle_url', array('short' => $short));
 
-    return "/".$new_url;
+    return $new_url;
   }
 
   protected function doShrinking($uri, $length)
