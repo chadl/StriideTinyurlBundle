@@ -45,7 +45,7 @@ class TinyurlService
 
     if(!empty($url))
     {
-      return "/".$url->getShort();
+      return "/".$this->router->generate('StriideTinyurlBundle_url', array('short' => $url->getShort()));
     }
 
     while(true)
