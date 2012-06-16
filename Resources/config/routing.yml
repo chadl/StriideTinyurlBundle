@@ -1,3 +1,17 @@
 StriideTinyurlBundle_url:
-    pattern:  /tu/{short}
-    defaults: { _controller: StriideTinyurlBundle:Url:short }
+  pattern:  /tu/{short}
+  defaults: { _controller: StriideTinyurlBundle:Url:short }
+
+StriideTinyurlBundle_admin_url_show_id:
+  pattern: /admin/tinyurl/{id}/show
+  defaults: { _controller: StriideTinyurlBundle:UrlAdmin:showId }
+  requirements:
+    id: \d+
+
+StriideTinyurlBundle_admin_url_show_slug:
+  pattern: /admin/tinyurl/{slug}/show
+  defaults: { _controller: StriideTinyurlBundle:UrlAdmin:showSlug }
+
+StriideTinyurlBundle_admin_url_index:
+  pattern: /admin/tinyurl
+  defaults: { _controller: StriideTinyurlBundle:UrlAdmin:index }

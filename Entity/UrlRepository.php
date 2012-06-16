@@ -12,4 +12,26 @@ use Doctrine\ORM\EntityRepository;
  */
 class UrlRepository extends EntityRepository
 {
+  /**
+   *
+   * @return Striide\TinyurlBundle\Entity\Url
+   */
+  public function findLatest($limit = 50)
+  {
+    $query = $this->getEntityManager()->createQuery('
+					SELECT u
+					FROM Striide\TinyurlBundle\Entity\Url u
+          ORDER BY u.created_at DESC
+				');
+    $query->setMaxResults($limit);
+    try
+    {
+      $urls = $query->getResult();
+      return $urls;
+    }
+    catch(\Doctrine\ORM\NoResultException $e)
+    {
+      return null;
+    }
+  }
 }

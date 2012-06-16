@@ -1,6 +1,7 @@
 Striide\TinyurlBundle\Entity\Url:
   type: entity
   table: striide_tinyurl
+  repositoryClass: Striide\TinyurlBundle\Entity\UrlRepository
   indexes:
     short_idx:
       columns: [ short ]

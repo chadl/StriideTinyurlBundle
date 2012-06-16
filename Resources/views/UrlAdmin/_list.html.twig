@@ -1,0 +1,33 @@
+{% if entities is defined and entities|count > 0 %}
+
+{% if needs_paging is defined and needs_paging %}
+
+{% endif %}
+
+<table class="table table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Slug</th>
+            <th>Url</th>
+            <th>Clicks</th>
+            <th>Created At</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('StriideTinyurlBundle_admin_url_show_id', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td><a href="{{ path('StriideTinyurlBundle_admin_url_show_slug', { 'slug': entity.short }) }}">{{ entity.short }}</a></td>
+            <td>{{ entity.uri }}</td>
+            <td>{{ entity.clicks }}</td>
+            <td>
+            {{ entity.createdAt | date("Y-m-d g:ia") }}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>There are no items.</p>
+{% endif %}

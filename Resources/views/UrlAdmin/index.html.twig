@@ -1,0 +1,9 @@
+{% extends "StriideTinyurlBundle::layout.html.twig" %}
+
+{% block striide_tinyurl_content %}
+
+<h1>Url List</h1>
+
+{% include 'StriideTinyurlBundle:UrlAdmin:_list.html.twig' with { 'entities': entities } %}
+
+{% endblock striide_tinyurl_content %}
