@@ -1,9 +1,5 @@
 {% if entities is defined and entities|count > 0 %}
 
-{% if needs_paging is defined and needs_paging %}
-
-{% endif %}
-
 <table class="table table-bordered table-condensed">
     <thead>
         <tr>
@@ -18,7 +14,11 @@
     {% for entity in entities %}
         <tr>
             <td><a href="{{ path('StriideTinyurlBundle_admin_url_show_id', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td><a href="{{ path('StriideTinyurlBundle_admin_url_show_slug', { 'slug': entity.short }) }}">{{ entity.short }}</a></td>
+            <td>
+              <a href="{{ path('StriideTinyurlBundle_admin_url_show_slug', { 'slug': entity.short }) }}">{{ entity.short }}</a>
+              <br>
+                <a href="{{ path('StriideTinyurlBundle_url', {'short': entity.short }) }}">try</a>
+            </td>
             <td>{{ entity.uri }}</td>
             <td>{{ entity.clicks }}</td>
             <td>

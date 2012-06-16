@@ -9,10 +9,25 @@ class UrlAdminController extends Controller
 {
   public function indexAction()
   {
-    $entities = $this->getDoctrine()->getEntityManager()->getRepository('StriideTinyurlBundle:Url')->findLatest();
+    $page = 1;
+    $request = $this->get('request');
+    if ($request->query->get('page'))
+    {
+      $page = $request->query->get('page');
+      $page = intval($page);
+
+      if ($page < 1)
+      {
+        $page = 1;
+      }
+    }
+
+    $entities = $this->getDoctrine()->getEntityManager()->getRepository('StriideTinyurlBundle:Url')->findAllLimit($page);
     return $this->render('StriideTinyurlBundle:UrlAdmin:index.html.twig',
                           array(
-                            'entities' => $entities
+                            'entities' => $entities,
+                            'page' => $page,
+                            'show_pager' => true
                           )
                         );
   }

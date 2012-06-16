@@ -12,11 +12,11 @@
     </tr>
     <tr>
       <th>Short</th>
-      <td>{{ entity.short }}</td>
+      <td>{{ entity.short }} - <a href="{{ path('StriideTinyurlBundle_url', {'short': entity.short }) }}">try</a></td>
     </tr>
     <tr>
       <th>URI</th>
-      <td>{{ entity.uri }}</td>
+      <td><a href="http://{{ domain_name }}{{ entity.uri }}">{{ entity.uri }}</a></td>
     </tr>
     <tr>
       <th>Clicks</th>
@@ -24,7 +24,7 @@
     </tr>
     <tr>
       <th>Created</th>
-      <td>{{ entity.createdAt|date('Y-m-d') }}</td>
+      <td>{{ entity.createdAt | date("Y-m-d g:ia") }}</td>
     </tr>
   </tbody>
 </table>
