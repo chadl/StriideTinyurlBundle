@@ -19,7 +19,7 @@ class UrlController extends Controller
     }
 
     $this->get('striide_tinyurl.service')->trackClick($short);
-    return $this->redirect($url->getUri());
+    return $this->redirect(urldecode($url->getUri()));
   }
 
 }
