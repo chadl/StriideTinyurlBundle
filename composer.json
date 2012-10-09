@@ -20,5 +20,5 @@
 			"Striide\\TinyurlBundle": ""
 		}
 	},
-	"target-dir": "StriideTinyurlBundle"
+	"target-dir": "Striide/TinyurlBundle/StriideTinyurlBundle"
 }
