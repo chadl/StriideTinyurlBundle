@@ -24,7 +24,7 @@ class TinyurlService
   public function trackClick($short)
   {
     // track the click for the short
-    $conn = $this->doctrine->getEntityManager()->getConnection();
+    $conn = $this->doctrine->getManager()->getConnection();
 
     $conn->beginTransaction();
     try
@@ -40,7 +40,7 @@ class TinyurlService
 
   public function getShort($uri)
   {
-    $repo = $this->doctrine->getEntityManager()->getRepository('StriideTinyurlBundle:Url');
+    $repo = $this->doctrine->getManager()->getRepository('StriideTinyurlBundle:Url');
     $url = $repo->findOneBy(array('uri' => $uri));
 
     if(!empty($url))
@@ -88,7 +88,7 @@ class TinyurlService
   public function getUrl($short)
   {
     // doctrine
-    $repo = $this->doctrine->getEntityManager()->getRepository('StriideTinyurlBundle:Url');
+    $repo = $this->doctrine->getManager()->getRepository('StriideTinyurlBundle:Url');
     $url = $repo->findOneBy(array('short' => $short));
 
     return $url;
@@ -104,7 +104,7 @@ class TinyurlService
     $entity->setShort($short);
     $entity->setUri($uri);
 
-    $em = $this->doctrine->getEntityManager();
+    $em = $this->doctrine->getManager();
     $em->persist($entity);
     $em->flush();
   }
