@@ -18,7 +18,7 @@ class UrlRepository extends EntityRepository
    */
   public function findAllLimit($page, $limit = 50)
   {
-    $query = $this->getManager()->createQuery('
+    $query = $this->getEntityManager()->createQuery('
 					SELECT u
 					FROM Striide\TinyurlBundle\Entity\Url u
           ORDER BY u.created_at DESC
@@ -43,7 +43,7 @@ class UrlRepository extends EntityRepository
    */
   public function findLatest($limit = 50)
   {
-    $query = $this->getManager()->createQuery('
+    $query = $this->getEntityManager()->createQuery('
 					SELECT u
 					FROM Striide\TinyurlBundle\Entity\Url u
           ORDER BY u.created_at DESC
