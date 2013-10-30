@@ -5,7 +5,7 @@
 <h1>Url List</h1>
 
 {% if show_pager %}
-  {% render 'StriideTwitterbootstrapBundle:Navigation:pager' with {'page':page} %}
+  {{ render(controller('StriideTwitterbootstrapBundle:Navigation:pager',{'page':page})) }}
 {% endif %}
 
 {% include 'StriideTinyurlBundle:UrlAdmin:_list.html.twig' with { 'entities': entities } %}
