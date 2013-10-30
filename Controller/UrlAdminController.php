@@ -22,7 +22,7 @@ class UrlAdminController extends Controller
       }
     }
 
-    $entities = $this->getDoctrine()->getManager()->getRepository('StriideTinyurlBundle:Url')->findAllLimit($page);
+    $entities = $this->getDoctrine()->getEntityManager()->getRepository('StriideTinyurlBundle:Url')->findAllLimit($page);
     return $this->render('StriideTinyurlBundle:UrlAdmin:index.html.twig',
                           array(
                             'entities' => $entities,
@@ -33,12 +33,12 @@ class UrlAdminController extends Controller
   }
   public function showSlugAction($slug)
   {
-    $entity = $this->getDoctrine()->getManager()->getRepository('StriideTinyurlBundle:Url')->findOneBy(array('short' => $slug));
+    $entity = $this->getDoctrine()->getEntityManager()->getRepository('StriideTinyurlBundle:Url')->findOneBy(array('short' => $slug));
     return $this->render('StriideTinyurlBundle:UrlAdmin:show.html.twig', array('entity' => $entity));
   }
   public function showIdAction($id)
   {
-    $entity = $this->getDoctrine()->getManager()->getRepository('StriideTinyurlBundle:Url')->findOneBy(array('id' => $id));
+    $entity = $this->getDoctrine()->getEntityManager()->getRepository('StriideTinyurlBundle:Url')->findOneBy(array('id' => $id));
     return $this->render('StriideTinyurlBundle:UrlAdmin:show.html.twig', array('entity' => $entity));
   }
 }
